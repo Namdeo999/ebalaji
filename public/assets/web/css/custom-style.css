@@ -1,0 +1,228 @@
+.main-nav nav .navbar-nav .nav-item a i {
+    line-height: 0;
+    position: relative;
+    top: 2px;
+    font-size: 14px;
+    color: #444;
+    padding-left: 5px;
+}
+
+.banner-area {
+    background-image: url(../images/about-bg.jpg);
+}
+.about-play img {
+    border-radius: 0px;
+}
+
+.services-card {
+    padding: 30px 20px 25px;
+    background-color: #fff;
+    border-radius: 0px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+}
+.services-card:hover::before {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    opacity: 0.8;
+}
+.work-process-left {
+    background-color: #070b3b;
+    padding: 105px 40px;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
+}
+.clients-content {
+    box-shadow: 0px 5px 10px 0px;
+    border-radius: 0px;
+}
+
+.footer-bg {
+    background-color: #070b3b;
+}
+
+.pt-10 {
+    padding-top: 10;
+}
+.pt-20 {
+    padding-top: 20;
+}
+.pt-30 {
+    padding-top: 30;
+}
+.pt-40 {
+    padding-top: 40;
+}
+.pt-50 {
+    padding-top: 50;
+}
+.pt-60 {
+    padding-top: 60;
+}
+.pt-70 {
+    padding-top: 70;
+}
+
+/* padding-bottom */
+.pb-10 {
+    padding-bottom: 10;
+}
+.pb-20 {
+    padding-bottom: 20;
+}
+.pb-30 {
+    padding-bottom: 30;
+}
+.pb-40 {
+    padding-bottom: 40;
+}
+.pb-50 {
+    padding-bottom: 50;
+}
+.pb-60 {
+    padding-bottom: 60;
+}
+.pb-70 {
+    padding-bottom: 70;
+}
+
+.section-title h2 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: 0;
+    line-height: 1.2;
+    color: #252525;
+    margin-bottom: 66px;
+}
+
+.pt-45 {
+    padding-top: 15px;
+}
+
+.talk-area-two {
+    /* background-image: url(../images/talk-bg2.jpg); */
+    background-image: url(../images/blur_bg_home.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    background-color: hsla(189, 90%, 49%, 0.11);
+    background-attachment: fixed;
+}
+
+.services-item .content {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    width: 80%;
+    bottom: -80px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 15px rgb(0 0 0 / 5%);
+    box-shadow: 0 0 15px rgb(0 0 0 / 5%);
+    border-radius: 8px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: 0;
+    line-height: 1.2;
+    color: #252525;
+    margin-bottom: 40px;
+}
+
+.about-content-3 .section-title h2 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: 0;
+    line-height: 1.2;
+    color: #252525;
+    margin-bottom: 15px;
+}
+
+.about-content-3 .section-title p {
+    margin-bottom: 30px;
+}
+
+.inner-banner .inner-title {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    position: relative;
+    z-index: 1;
+}
+
+.content .sp-color2 {
+    color: #ff0808;
+}
+
+.footer-widget p {
+    margin-bottom: 20px;
+    color: #fff;
+    max-width: 300px;
+    text-align: justify;
+}
+
+.clients-content p {
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+.banner-item-ptb {
+    padding-top: 120px;
+    padding-bottom: 180px;
+}
+
+.top-header {
+    padding: 5px 0 5px;
+}
+
+.navbar {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.main-nav .nav-side .nav-side-item .get-btn {
+    top: 0;
+}
+
+.main-nav nav .navbar-nav .nav-item a {
+    font-weight: 600;
+}
+
+.choose-img-tw {
+    position: relative;
+    z-index: 1;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+.choose-img-tw::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: 90%;
+    height: 100%;
+    background-color: #070b3b;
+}
+
+/* #how_it_work{
+    background-image: url(../images/about-bg.jpg);
+} */
+
+
+
+
+
+
