@@ -42,4 +42,5 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 // Route::get('/user-register', [RegisterController::class, 'index']);
 Route::post('/user-register', [RegisterController::class, 'register']);
 
+
 Route::post('register/register', [UserController::class, 'saveMobileNo']);
