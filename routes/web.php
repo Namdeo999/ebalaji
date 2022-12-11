@@ -22,6 +22,18 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/services', function () {
+    return view('services');
+});
+Route::get('/privacy-policy', function () {
+    return view('privacy_policy');
+});
+Route::get('/disclaimer', function () {
+    return view('disclaimer');
+});
+Route::get('/refund-policy', function () {
+    return view('refund_policy');
+});
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -38,9 +50,25 @@ Route::get('/dashboard', function () {
 Route::get('/login', [UserController::class, 'index']);
 Route::post('/user-login', [UserController::class, 'userLogin']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-// Route::get('/user-register', [RegisterController::class, 'index']);
 Route::post('/user-register', [RegisterController::class, 'register']);
-
-
 Route::post('register/register', [UserController::class, 'saveMobileNo']);
+
+Route::group(['middleware'=>'user_auth'], function(){
+
+    Route::fallback(function () {
+        return view('404');
+    });
+
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('dashboard','index');
+        
+    });
+
+
+});
+
+
+
+// Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route::get('/user-register', [RegisterController::class, 'index']);
+

@@ -15,7 +15,7 @@
                             </p> -->
                         <div class="footer-call-content">
                             <h3>Talk to Our Support</h3>
-                            <span><a href="tel:+1002-123-4567">+1 002-123-4567</a></span>
+                            <span><a href="tel:+91 - 89560-76979">+91 - 89560-76979</a></span>
                             <i class='bx bx-headphone'></i>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                     <div class="footer-widget pl-2">
                         <h3>Services</h3>
                         <ul class="footer-list">
-                            <li>
+                            {{-- <li>
                                 <a href="service-details.html" target="_blank">
                                     <i class='bx bx-chevron-right'></i>
                                     Bill Payments & Recharge
@@ -35,36 +35,48 @@
                                     <i class='bx bx-chevron-right'></i>
                                     Banking Services
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
-                                <a href="service-details.html" target="_blank">
+                                <a href="services" >
                                     <i class='bx bx-chevron-right'></i>
-                                    Payment Services
+                                    Pan Card Services
                                 </a>
                             </li>
-                            <li>
-                                <a href="service-details.html" target="_blank">
-                                    <i class='bx bx-chevron-right'></i>
-                                    Cashdrop Services
-                                </a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
             
                 <div class="col-lg-3 col-sm-6">
                     <div class="footer-widget">
-                        <h3>Newsletter</h3>
-                        <p>EBalaji provides services to Pan India and has been authorized to apply for PAN CARD across India through our Super Distributor, Distributor & retailer network.</p>
-                        <!-- <div class="newsletter-area">
-                            <form class="newsletter-form" data-toggle="validator" method="POST">
-                                <input type="email" class="form-control" placeholder="Enter Your Email" name="EMAIL" required autocomplete="off">
-                                <button class="subscribe-btn" type="submit">
-                                    <i class='bx bx-paper-plane'></i>
-                                </button>
-                                <div id="validator-newsletter" class="form-result"></div>
-                            </form>
-                        </div> -->
+                        <h3>Important Links</h3>
+                        <ul class="footer-list">
+                            {{-- <li>
+                                <a href="terms-conditions" target="_blank">
+                                    <i class='bx bx-chevron-right'></i>
+                                    Terms & Conditions
+                                </a>
+                            </li> --}}
+                            <li>
+                                <a href="privacy-policy" >
+                                    <i class='bx bx-chevron-right'></i>
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="disclaimer" >
+                                    <i class='bx bx-chevron-right'></i>
+                                    Disclaimer                                
+                                </a>
+                            </li>
+                            <li>
+                                <a href="refund-policy">
+                                    <i class='bx bx-chevron-right'></i>
+                                    Refund and Cancellation Policy                                  
+                                </a>
+                            </li>
+                            
+                        </ul>
                     </div>
                 </div>
             </div>

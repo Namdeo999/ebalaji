@@ -5,7 +5,7 @@
                 <div class="col-lg-7 col-md-6">
                     <div class="top-head-left">
                         <div class="top-contact">
-                            <h3>Call On : <a href="tel:+1(212)-255-5511">+000000000</a></h3>
+                            <h3>Call On : <a href="tel:++91 - 89560-76979">+91 - 89560-76979</a></h3>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
 <div class="navbar-area">
     <div class="mobile-nav">
         <a href="index.html" class="logo">
-            <!-- <img src="{{asset('public/assets/images/AdminLTELogo.png')}}" alt="Logo"> -->
+            {{-- <img src="{{asset('assets/images/AdminLTELogo.png')}}" alt="Logo"> --}}
             <h5>Ebalaji</h5>
         </a>
     </div>
@@ -53,17 +53,15 @@
         <div class="container-fluid">
             <div class="container-max">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <!-- <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('public/assets/images/logo-1.png')}}" alt="Logo"></a> -->
-                    <a class="navbar-brand" href="{{url('/')}}"><h5>Ebalaji</h5> </a>
+                    <a class="navbar-brand" href="{{url('/')}}">
+                        <img src="{{asset('assets/images/logos/ebalaji-logo-84-62.jpg')}}" alt="Logo">
+                        <img src="{{asset('assets/images/logos/ebalaji.jpg')}}" alt="Logo">
+                    </a>
+                    {{-- <a class="navbar-brand" href="{{url('/')}}"><h5>Ebalaji</h5> </a> --}}
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
                                 <a href="{{url('/')}}" class="nav-link active">Home</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    {{-- <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
-                                </ul>
                             </li>
 
                             <li class="nav-item">
@@ -74,14 +72,12 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{url('/services')}}" class="nav-link">Services</a>
+                            </li>
 
                             <li class="nav-item">
                                 <a href="{{url('/contact')}}" class="nav-link">Contact Us</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    {{-- <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
-                                </ul>
                             </li>
                         </ul>
                     

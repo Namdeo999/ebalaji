@@ -6,15 +6,7 @@
 <div class="container">
 <div class="inner-title text-center">
 <h3>About Us</h3>
-<ul>
-<li>
-<a href="index.html">Home</a>
-</li>
-<li>
-<i class='bx bx-chevrons-right'></i>
-</li>
-<li>About Us</li>
-</ul>
+
 </div>
 </div>
 <div class="inner-shape">
@@ -22,54 +14,66 @@
 </div>
 </div>
 
-<div class="about-area ptb-100">
-<div class="container">
-<div class="row align-items-center">
-<div class="col-lg-6">
-<div class="about-play">
-<img src="assets/images/about/about-img1.jpg" alt="About Images">
-<div class="about-play-content">
-<span>Watch Our Intro Video</span>
-<h2>Perfect Solution for It Services!</h2>
-<div class="play-on-area">
-<a href="https://www.youtube.com/watch?v=tUP5S4YdEJo" class="play-on popup-btn"><i class='bx bx-play'></i></a>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="about-content ml-25">
-<div class="section-title">
-<span class="sp-color2">15 Years of Experience</span>
-<h2>Right Partner for Software Innovation</h2>
-<p>
-Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet.
-</p>
-</div>
-<div class="row">
-<div class="col-lg-6 col-md-6">
-<ul class="about-list text-start">
-<li><i class='bx bxs-check-circle'></i>Cost of Supplies and Equipment</li>
-<li><i class='bx bxs-check-circle'></i>Bribed Autor Nisi Elit Volume</li>
-<li><i class='bx bxs-check-circle'></i>Cost of Supplies and Equipment</li>
-</ul>
-</div>
-<div class="col-lg-6 col-md-6">
-<ul class="about-list about-list-2 text-start">
-<li><i class='bx bxs-check-circle'></i>Change the Volume of Expected</li>
-<li><i class='bx bxs-check-circle'></i>Easy to Customer Services</li>
-<li><i class='bx bxs-check-circle'></i>Good Quality Products Services</li>
-</ul>
-</div>
-</div>
-<p class="about-content-text">Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section class="technology-area-four pt-100 pb-70">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="technology-right">
+                    <div class="section-title">
+                        <span class="sp-color2">About Us</span>
+                        <h1 class="font-bold text-primary">EBALAJI SEWA PVT LTD</h1>
+                        <p>
+                            EBALAJI SEWA PVT LTD, Established In 30 September 2022 Has Established . EBALAJI SEWA PVT LTD Provides People An Opportunity To Be Entrepreneur And Offers The Individual An Opportunity To Participate In A Business Perfectly Suited To All Who Have Dreams And Are Willing To Spend Genuine Efforts To Make Dreams Come True.
+                        </p>
+                        <p>
+                            EBALAJI SEWA PVT LTD Introduces A Unique Digital And Cashless Project Which Is Dynamic, Vibrant, And Rapidly Expanding Channel Of Distribution For The Marketing Of Products And Services.
+                        </p>
+                        <p>We Offer Both UTI AND NSDL PAN CARD Facilities. Our Portal Is A Leading Website In INDIA- On Our Portal B2B Retailers And Users Can MAKE PAN CARD Online.</p>
+                    </div>
+                    {{-- <div class="row">
+                        <div class="col-lg-3 col-6 col-sm-3">
+                            <div class="technology-item">
+                                <i class="flaticon-android"></i>
+                                <h3>Android</h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6 col-sm-3">
+                            <div class="technology-item">
+                                <i class="flaticon-website"></i>
+                                <h3>Web</h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6 col-sm-3">
+                            <div class="technology-item">
+                                <i class="flaticon-apple"></i>
+                                <h3>ios</h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6 col-sm-3">
+                            <div class="technology-item">
+                                <i class="flaticon-television"></i>
+                                <h3>TV</h3>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                {{-- <div class="technology-play-area"> --}}
 
-<div class="choose-area pt-100 pb-70">
+                    <div class="banner-five-img">
+                        <img src="{{asset('assets/images/director1.jpg')}}" alt="Images">
+                    </div>
+                    {{-- <a href="https://www.youtube.com/watch?v=tUP5S4YdEJo" class="play-btn popup-btn">
+                        <i class="bx bx-play"></i>
+                    </a> --}}
+                {{-- </div> --}}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- <div class="choose-area pt-100 pb-70">
 <div class="container">
 <div class="row">
 <div class="col-lg-6">
@@ -110,10 +114,10 @@ Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec 
 </div>
 </div>
 </div>
-</div>
+</div> --}}
 
 
-<div class="security-area pt-100 pb-70">
+{{-- <div class="security-area pt-100 pb-70">
 <div class="container">
 <div class="section-title text-center">
 <span class="sp-color2">IT Security & Computing</span>
@@ -164,10 +168,10 @@ Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec 
 </div>
 </div>
 </div>
-</div>
+</div> --}}
 
 
-<div class="brand-area-two ptb-100">
+{{-- <div class="brand-area-two ptb-100">
 <div class="container">
 <div class="brand-slider owl-carousel owl-theme">
 <div class="brand-item">
@@ -190,10 +194,10 @@ Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec 
 </div>
 </div>
 </div>
-</div>
+</div> --}}
 
 
-<div class="counter-area pt-100 pb-70">
+{{-- <div class="counter-area pt-100 pb-70">
 <div class="container">
 <div class="section-title text-center">
 <span class="sp-color2">Numbers Are Talking</span>
@@ -239,6 +243,6 @@ Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec 
 <img src="assets/images/shape/shape2.png" alt="Images">
 </div>
 </div>
-</div>
+</div> --}}
 
 @endsection

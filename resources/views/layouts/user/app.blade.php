@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('page_title')</title>
-
+        <link rel="icon" type="image/x-icon" href="{{asset('assets/images/logos/favicon.png')}}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.min.css') }}" />//
+        <link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/user/css/fontawesome-free/css/all.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/user/css/tempusdominus-bootstrap-4.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/user/css/icheck-bootstrap.min.css') }}" />

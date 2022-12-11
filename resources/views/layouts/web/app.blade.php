@@ -4,13 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        
+        <link rel="icon" type="image/x-icon" href="{{asset('assets/images/logos/favicon.png')}}">
+
         <link rel="stylesheet" href="{{ asset('assets/web/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/web/css/bootstrap-icons.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/web/css/animate.min.css') }}">
 
-        <link rel="stylesheet" href="{{asset('public/assets/fonts/flaticon.css')}}">
-        <link rel="stylesheet" href="{{asset('public/assets/css/boxicons.min.css')}}">
+        {{-- <link rel="stylesheet" href="{{asset('public/assets/fonts/flaticon.css')}}">
+        <link rel="stylesheet" href="{{asset('public/assets/css/boxicons.min.css')}}"> --}}
 
         <link rel="stylesheet" href="{{ asset('assets/web/css/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/web/css/owl.theme.default.min.css') }}">
@@ -20,10 +21,10 @@
         <link rel="stylesheet" href="{{ asset('assets/web/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/web/css/custom-style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/web/css/responsive.css') }}">
-        <link rel="icon" type="image/png" href="{{asset('assets/images/favicon.png') }}">
+        {{-- <link rel="icon" type="image/png" href="{{asset('assets/images/favicon.png') }}"> --}}
         <title>Ebalaji Services</title>
 
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto Serif:wght@400;600;700&display=swap" rel="stylesheet">
 
         <style>
             /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -32,7 +33,7 @@
 
         <style>
             body {
-                font-family: 'Nunito', sans-serif;
+                font-family: 'Noto Serif', sans-serif;
                 background-color: #f3f5f8;
             }
             .nav-link{
@@ -60,6 +61,7 @@
         <script src="{{asset('assets/web/js/jquery.ajaxchimp.min.js')}}"></script>
         <script src="{{asset('assets/web/js/form-validator.min.js')}}"></script>
         <script src="{{asset('assets/web/js/contact-form-script.js')}}"></script>
+        <script src="{{asset('assets/web/js/custom.js')}}"></script>
     </body>   
 </html>
 
