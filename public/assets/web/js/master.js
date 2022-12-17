@@ -1,14 +1,30 @@
-function saveMobileNo() {
+
+$(document).on('click','#registerBtn', function (e) {
+    e.preventDefault();
+    $('#registerModal').modal('show');
+    $('#register_err').html('');
+    $('#register_err').removeClass('alert alert-danger');
+    $("#registerForm").trigger( "reset"); 
+    // $('#saveCountryBtn').removeClass('hide');
+    // $('#updateCountryBtn').addClass('hide');
+});
+
+$(document).on('click','#saveUserBtn', function (e) {
+    e.preventDefault();
+    registerUser();
+});
+
+function registerUser() {
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
     });
 
-    var formData = new FormData($("#mobileForm")[0]);
+    var formData = new FormData($("#registerForm")[0]);
     $.ajax({
         type: "post",
-        url: "register",
+        url: "user-register",
         data: formData,
         dataType: "json",
         cache: false,
@@ -18,10 +34,52 @@ function saveMobileNo() {
             console.log(response);
             if(response.status === 400)
             {
-                console.log(response)
+                $('#register_err').html('');
+                $('#register_err').addClass('alert alert-danger');
+                var count = 1;
+                $.each(response.errors, function (key, err_value) { 
+                    $('#register_err').append('<span>' + count++ +'. '+ err_value+'</span></br>');
+                });
+
             }else{
+                $('#register_err').html('');
+                $('#registerModal').modal('hide');
                 window.location.reload();
             }
         },
     });
 }
+
+function getStateByCountry(country_id) {
+    $.ajax({
+        type: "get",
+        url: "get-state-by-country/"+country_id,
+        dataType: "json",
+        success: function (response) {
+            $('#state_id').html("");
+            $('#city_id').html("");
+            if (response.status == 200) {
+                $('#state_id').append(response.html);  
+                // $("#state_id").trigger("chosen:updated"); 
+            }
+        }
+    });
+}
+
+function getCityByState(state_id) {
+    $.ajax({
+        type: "get",
+        url: "get-city-by-state/"+state_id,
+        dataType: "json",
+        success: function (response) {
+            $('#city_id').html("");
+            if (response.status == 200) {
+                $('#city_id').append(response.html); 
+                // $("#city_id").trigger("chosen:updated");  
+                
+            }
+        }
+    });
+}
+
+

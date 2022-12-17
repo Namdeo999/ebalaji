@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MasterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,9 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/register', function () {
-    return view('register');
-});
+// Route::get('/register', function () {
+//     return view('register');
+// });
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -50,8 +51,16 @@ Route::get('/dashboard', function () {
 Route::get('/login', [UserController::class, 'index']);
 Route::post('/user-login', [UserController::class, 'userLogin']);
 
-Route::post('/user-register', [RegisterController::class, 'register']);
-Route::post('register/register', [UserController::class, 'saveMobileNo']);
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('register','index');
+    Route::post('user-register','register');
+    Route::get('get-state-by-country/{country_id}', 'getStateByCountry');
+    Route::get('get-city-by-state/{state_id}', 'getCityByState');
+    
+});
+
+// Route::post('/register', [RegisterController::class, 'register']);
+// Route::post('register/register', [UserController::class, 'saveMobileNo']);
 
 Route::group(['middleware'=>'user_auth'], function(){
 

@@ -83,8 +83,10 @@
                     
                         <div class="nav-side d-display nav-side-mt">
                             <div class="nav-side-item">
+                                <button type="button" id="registerBtn" class="btn btn-primary btn-flat btn-sm "><i class='bi bi-chevron-right'></i> Register</button>
+
                                 <div class="get-btn">
-                                    <a href="{{url('/login')}}" class="default-btn btn-bg-two border-radius-50">Login<i class='bi bi-chevron-right'></i></a>
+                                    <a href="{{url('/login')}}" class="btn btn-primary btn-sm">Login<i class='bi bi-chevron-right'></i></a>
                                 </div>
                             </div>
                         </div>

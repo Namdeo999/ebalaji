@@ -113,7 +113,7 @@
                     <div class="col-lg-6 col-sm-6">
                         <div class="services-card services-card-color-bg">
                             <i class="flaticon-consultant"></i>
-                            <h3><a href="service-details.html">Bill Payments & Recharge</a></h3>
+                            <h3><a href="">Bill Payments & Recharge</a></h3>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat.</p> -->
                             <!-- <a href="service-details.html" class="learn-btn">Learn More <i class='bx bx-chevron-right'></i></a> -->
                         </div>
@@ -121,7 +121,7 @@
                     <div class="col-lg-6 col-sm-6">
                         <div class="services-card services-card-color-bg">
                             <i class="flaticon-consulting"></i>
-                            <h3><a href="service-details.html">Banking Services</a></h3>
+                            <h3><a href="">Banking Services</a></h3>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat.</p> -->
                             <!-- <a href="service-details.html" class="learn-btn">Learn More <i class='bx bx-chevron-right'></i></a> -->
                         </div>
@@ -129,7 +129,7 @@
                     <div class="col-lg-6 col-sm-6">
                         <div class="services-card services-card-color-bg">
                             <i class="flaticon-web-development"></i>
-                            <h3><a href="service-details.html">Payment Services</a></h3>
+                            <h3><a href="">Payment Services</a></h3>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat.</p> -->
                             <!-- <a href="service-details.html" class="learn-btn">Learn More <i class='bx bx-chevron-right'></i></a> -->
                         </div>
@@ -137,7 +137,7 @@
                     <div class="col-lg-6 col-sm-6">
                         <div class="services-card services-card-color-bg">
                             <i class="flaticon-stats"></i>
-                            <h3><a href="service-details.html">Travel Services</a></h3>
+                            <h3><a href="">Travel Services</a></h3>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat.</p> -->
                             <!-- <a href="service-details.html" class="learn-btn">Learn More <i class='bx bx-chevron-right'></i></a> -->
                         </div>
