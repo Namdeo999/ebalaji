@@ -1,19 +1,34 @@
 <a href="index3.html" class="brand-link">
       <img src="assets/images/AdminLTELogo.png" alt="Ebalaji Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 
-      <span class="brand-text text-dark">Ebalaji Services</span>
+      <span class="brand-text text-light">Ebalaji Services</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-1 pb-1 mb-1 d-flex">
+      <!-- <div class="user-panel mt-1 pb-1 mb-1 d-flex">
         <div class="image">
           <img src="assets/images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block text-dark">Alexander Pierce</a>
+          <a href="#" class="d-block text-light">User Name</a>
         </div>
+      </div> -->
+
+      <div class="dropdown bg-light mt-1 " style="box-shadow: 0px 0px 2px 0px">
+        <button class="btn btn-secondry btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{asset('assets/images/user_active.png')}}" class="rounded-circle" > {{ucwords(session('LOGIN_NAME'))}}
+           
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+            @if (session('LOGIN'))
+                <li class="nav-item">
+                    {{-- <a class="dropdown-item active" aria-current="page" href="{{url('logout')}}">{{session('ADMIN_NAME')}} Logout</a> --}}
+                    <a class="dropdown-item active" aria-current="page" href="logout">Logout</a>
+                </li>
+            @endif
+        </ul>
       </div>
 
      
@@ -24,23 +39,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="/dashboard" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
+            <a href="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a>
             
           </li>
-          <li class="nav-item menu-open">
-            <a href="/dashboard2" class="nav-link ">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Dashboard 2
-              </p>
-            </a>
-            
-          </li>
+          
         <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -53,32 +55,32 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="pages/layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-angle-right nav-icon"></i>
                   <p>Retailer</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-angle-right nav-icon"></i>
                   <p>Distributor</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-angle-right nav-icon"></i>
                   <p>Super Distributor</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-angle-right nav-icon"></i>
                   <p>White Level</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Admin></p>
+                <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Admin</p>
                 </a>
               </li>
             </ul>

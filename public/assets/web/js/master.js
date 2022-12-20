@@ -2,6 +2,7 @@
 $(document).on('click','#registerBtn', function (e) {
     e.preventDefault();
     $('#registerModal').modal('show');
+    // $('#userDetailModal').modal('show');
     $('#register_err').html('');
     $('#register_err').removeClass('alert alert-danger');
     $("#registerForm").trigger( "reset"); 
@@ -31,7 +32,8 @@ function registerUser() {
         contentType: false,
         processData: false,
         success: function (response) {
-            console.log(response);
+            // console.log(response);
+            
             if(response.status === 400)
             {
                 $('#register_err').html('');
@@ -40,11 +42,13 @@ function registerUser() {
                 $.each(response.errors, function (key, err_value) { 
                     $('#register_err').append('<span>' + count++ +'. '+ err_value+'</span></br>');
                 });
-
             }else{
                 $('#register_err').html('');
                 $('#registerModal').modal('hide');
-                window.location.reload();
+                // window.location.reload();
+                $('#show_user_detail').html('');
+                $('#show_user_detail').append(response.html);
+                $('#userDetailModal').modal('show');
             }
         },
     });

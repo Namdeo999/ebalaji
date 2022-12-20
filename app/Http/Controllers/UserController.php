@@ -9,6 +9,7 @@ use App\MyApp;
 use GuzzleHttp\Client;
 use Validator;
 use App\Models\User;
+use App\Models\UserDetail;
 
 class UserController extends Controller
 {
@@ -33,11 +34,14 @@ class UserController extends Controller
         {
             if(Hash::check($req->input('password'),$result->password))
             {
+                $user_detail = UserDetail::where(['user_id'=>$result->id])->first();
+
                 $req->session()->put('LOGIN', true);
                 $req->session()->put('LOGIN_ID', $result->id);
-                $req->session()->put('LOGIN_NAME', $result->name);
-                $req->session()->put('LOGIN_ROLE', $result->role_id);
+                $req->session()->put('LOGIN_NAME', $user_detail->name);
+                $req->session()->put('LOGIN_ROLE', $user_detail->role_id);
                 return redirect('dashboard');
+
             }else{
                 $req->session()->flash('error','Please enter valid password');
                 return redirect('/login');
@@ -50,11 +54,11 @@ class UserController extends Controller
 
     public function logout(Request $req)
     { 
-        if(session('LOGIN_ROLE') == MyApp::ADMINISTRATOR){
-            session()->forget('ADMIN_LOGIN');
-        }elseif (session('LOGIN_ROLE') == MyApp::BILLING) {
-            session()->forget('BILLING_LOGIN');
-        }
+        // if(session('LOGIN_ROLE') == MyApp::ADMINISTRATOR){
+        //     session()->forget('ADMIN_LOGIN');
+        // }elseif (session('LOGIN_ROLE') == MyApp::BILLING) {
+        //     session()->forget('BILLING_LOGIN');
+        // }
         session()->forget('LOGIN');
         session()->forget('LOGIN_ID');
         session()->forget('LOGIN_NAME');

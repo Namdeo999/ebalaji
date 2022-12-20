@@ -30,6 +30,7 @@ class RegisterController extends Controller
 
     public function register( Request $req)
     {
+        
         $validator = Validator::make($req->all(),[
             'mobile' => 'required|max:191',
             'email' => 'required|unique:users,email,'.$req->input('email'),
@@ -52,12 +53,16 @@ class RegisterController extends Controller
             $model = new User ;
             $model->mobile = $req->input('mobile');
             $model->email = strtolower($req->input('email'));
-            $model->password = Hash::make($req->input('password')); 
+            
+            // $model->password = Hash::make($req->input('password')); 
+            $model->password = Hash::make('User@123'); 
 
             if($model->save()){
                 $userDetail = new UserDetail ;
+                $unique_id = 'EPAY0'.$model->id;
 
                 $userDetail->user_id = $model->id;
+                $userDetail->unique_id = $unique_id;
                 $userDetail->role_id = $req->input('role_id');
                 $userDetail->name = strtolower($req->input('name'));
                 $userDetail->pan = $req->input('pan');
@@ -65,13 +70,85 @@ class RegisterController extends Controller
                 $userDetail->state_id = $req->input('state_id');
                 $userDetail->city_id = $req->input('city_id');
                 $userDetail->pincode = $req->input('pincode');
+                $userDetail->join_amount = $req->input('join_amount');
                 $userDetail->save();
+                if ($userDetail->save()) {
+                    $data = $this->getUserDetail($model->id);
+                }
             }
 
             return response()->json([
                 'status'=>200,
+                'html'=>$data['html'],
             ]);
         }
+    }
+
+    public function getUserDetail($id){
+        $user_detail = User::join('user_details','user_details.user_id','=','users.id')
+            ->join('roles','user_details.role_id','=','roles.id')
+            ->join('countries','user_details.country_id','=','countries.id')
+            ->join('states','user_details.state_id','=','states.id')
+            ->join('cities','user_details.city_id','=','cities.id')
+            ->where('users.id',$id)
+            ->select('users.*', 'user_details.*','roles.role','countries.country','states.state','cities.city')  
+            ->first();
+
+
+            $html = '';
+                $html .= "<div class='card'>";
+                    $html .= "<div class='card-body'>";
+                        $html .= "<div class='row'>";
+                            $html .= "<div class='col-md-4'>".$user_detail->mobile."</div>";
+                            $html .= "<div class='col-md-8 text-end'>".strtoupper($user_detail->email)."</div>";
+                        $html .= "</div>";
+                    $html .= "</div>";
+                $html .= "</div>";
+
+                $html .= "<div class='card'>";
+                    $html .= "<div class='card-body table-responsive p-0' >";
+
+                        $html .= "<table class='table table-head-fixed text-nowrap'>";
+                            $html .= "<tbody>";
+                                $html .= "<tr>";
+                                    $html .= "<th>Id</th>";
+                                    $html .= "<td>".$user_detail->unique_id."</td>";
+                                $html .= "</tr>";
+                                $html .= "<tr>";
+                                    $html .= "<th>Role</th>";
+                                    $html .= "<td>".ucwords($user_detail->role)."</td>";
+                                $html .= "</tr>";
+                                $html .= "<tr>";
+                                    $html .= "<th>Name</th>";
+                                    $html .= "<td>".ucwords($user_detail->name)."</td>";
+                                $html .= "</tr>";
+                                $html .= "<tr>";
+                                    $html .= "<th>PAN</th>";
+                                    $html .= "<td>".strtoupper($user_detail->pan)."</td>";
+                                $html .= "</tr>";
+                                $html .= "<tr>";
+                                    $html .= "<th>Joining Amount</th>";
+                                    $html .= "<td>".$user_detail->join_amount."</td>";
+                                $html .= "</tr>";
+                            $html .= "</tbody>";
+                        $html .= "</table>";
+                    $html .= "</div>";
+                $html .= "</div>";
+
+                $html .= "<div class='card'>";
+                    $html .= "<div class='card-body'>";
+                        $html .= "<div class='row'>";
+                            $html .= "<div class='col-md-3'>".ucwords($user_detail->country)."</div>";
+                            $html .= "<div class='col-md-5 text-center'>".ucwords($user_detail->state)."</div>";
+                            $html .= "<div class='col-md-4 text-end'>".ucwords($user_detail->city)."</div>";
+                        $html .= "</div>";
+                    $html .= "</div>";
+                $html .= "</div>";
+
+
+        return $result = [
+            "html"=>$html
+        ];
     }
 
     public function getStateByCountry($country_id)
@@ -106,7 +183,18 @@ class RegisterController extends Controller
         ]);
     }
 
-
+    // async generateRandomVleId() {
+    //     const unique_id = CustomFunction.randomUserId();
+    //     try {
+    //       const unique_id_exist = await User.exists({ vle_id: unique_id });
+    //       if (unique_id_exist) {
+    //         generateRandomVleId();
+    //       }
+    //     } catch (err) {
+    //       return next(err);
+    //     }
+    //     return unique_id;
+    //   },
 
 
     //public function index()

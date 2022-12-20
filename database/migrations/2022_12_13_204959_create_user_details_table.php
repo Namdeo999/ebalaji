@@ -16,6 +16,7 @@ class CreateUserDetailsTable extends Migration
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->default(0);
+            $table->string('unique_id')->nullable();
             $table->integer('role_id')->default(0);
             $table->string('name')->nullable();
             $table->string('pan')->nullable();
@@ -23,6 +24,7 @@ class CreateUserDetailsTable extends Migration
             $table->integer('state_id')->default(0);
             $table->integer('city_id')->default(0);
             $table->integer('pincode')->default(0);
+            $table->integer('join_amount')->default(0);
             $table->timestamps();
         });
     }

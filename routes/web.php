@@ -73,7 +73,7 @@ Route::group(['middleware'=>'user_auth'], function(){
         
     });
 
-
+    Route::get('logout', [UserController::class, 'logout']);
 });
 
 

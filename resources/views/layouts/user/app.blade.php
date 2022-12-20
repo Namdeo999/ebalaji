@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ asset('assets/user/css/OverlayScrollbars.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/user/css/daterangepicker.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/user/css/summernote-bs4.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/user/css/user-style.css') }}" />
 
         {{-- <link rel="stylesheet" href="{{ asset('assets/common/css/core.css') }}" /> --}}
         {{-- <link rel="stylesheet" href="{{ asset('assets/common/css/theme-default.css') }}" /> --}}
@@ -25,10 +26,10 @@
 
         <style>
             .sidebar .nav-link p{
-                color:black;
+                color:rgb(252, 249, 249);
             }
             .nav-sidebar>.nav-item .nav-icon {
-                color:black;
+                color:rgb(252, 252, 252);
             }
         </style>
     </head>
@@ -38,13 +39,13 @@
             <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top">
                 @include('layouts.user.header')
             </nav>
-            <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: #f4f6f9; ">
+            <aside class="main-sidebar sidebar-dark-primary elevation-4" >
                 @include('layouts.user.sidenav')
             </aside>
 
             <div class="container-fluid pt-4 pb-4">
                 <div class="content-wrapper">
-                    <section class="content ">
+                    <section class="content pt-4">
                         @yield('style')
                         @yield('content')
                         @yield('script')
