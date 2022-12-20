@@ -52,7 +52,7 @@ Route::get('/login', [UserController::class, 'index']);
 Route::post('/user-login', [UserController::class, 'userLogin']);
 
 Route::controller(RegisterController::class)->group(function () {
-    Route::get('register','index');
+    // Route::get('register','index');
     Route::post('user-register','register');
     Route::get('get-state-by-country/{country_id}', 'getStateByCountry');
     Route::get('get-city-by-state/{state_id}', 'getCityByState');
