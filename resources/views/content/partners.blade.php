@@ -1,39 +1,38 @@
-@php
-    use App\Models\Role;
-    use App\Models\Country;
-    $roles = Role::all();
-    $countries = Country::all();
-@endphp
-<style>
-    .hide{
-        display: none;
-    }
-</style>
+@extends('layouts.user.app')
+@section('page_title', 'Partners')
 
-<div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@section('content-header')
+    <div class="content-header mt-1">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3 class="m-0"><b>Partners</b></h3>
+            </div>
+            <div class="col-sm-6">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+                    <button type="button" id="newPartner" class="btn btn-primary btn-flat btn-sm "><i class="fas fa-plus"></i> New</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('content') 
+
+<div class="modal fade" id="partnerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Register</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Create Partner</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="col-md-12">
                     <div class="card" >
                         <div class="card-body">
-                            <form id="registerForm" >
+                            <form id="partnerForm">
                                 @csrf
-                                <div class="row text-center">
-                                    <div class="col-md-12 mt-3 mb-2">
-                                        <img src="{{asset('/assets/images/logos/ebalaji-logo-84-62.jpg')}}" ></td><br>
-                                        <h4 class="mt-2"><b>Welcome, Ebalaji Services</b></h4>
-                                    </div>
-                                </div>
-                                <hr>
-                                {{-- <form action="{{url('/user-register')}}" method="post"> --}}
-                                
-                                <div id="register_err"></div>
-
+                               
+                                <div id="partner_err"></div>
                                 <div class="row mt-4">
                                     <div class="col-md-3">
                                         <input type="number"  name="mobile"  id="mobile" class="form-control form-control-sm" placeholder="Mobile" >
@@ -111,6 +110,7 @@
 
                                 </div>
 
+                                <input type="hidden" name="partner_id" id="partner_id" value="{{session('LOGIN_ID')}}">
                                 
                             </form>
         
@@ -119,33 +119,102 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="saveUserBtn" class="btn btn-primary btn-sm">Register</button>
+                <button type="button" id="savePartnerBtn" class="btn btn-primary btn-sm">Save</button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="userDetailModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">User Detail</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="show_user_detail"></div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+
+            <div class="card-header">
+                    
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        <h3 class="card-title">Partners</h3>
+                    </div>
+                    <div class=" col-md-4 col-lg-4 col-xl-4">
+                        <select id="filter_city_id" class="form-select form-select-sm select_chosen">
+                            <option selected disabled>Role</option>
+                            @foreach ($roles as $key => $list)
+                                <option value="{{$list->id}}" >{{ucwords($list->role)}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" >
+                                <input type="text" name="table_search" class="form-control float-right search" placeholder="Search">
+    
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm">Payment</button>
+
+            <div class="card-body table-responsive p-0" style="height: 450px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Unique Id</th>
+                            <th>Role</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($partners as $key => $list)
+                            <tr>
+                                <td>{{++$key}}</td>
+                                <td>{{$list->unique_id }}</td>
+                                <td>{{ucwords($list->role) }}</td>
+                                <td>{{ucwords($list->name)}}</td>
+                                <td> <span class="badge bg-warning text-dark">Pending</span></td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-sm editAdminBtn mr-1" value="{{$list->id}}"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm deleteAdminBtn ml-1" value="{{$list->id}}"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+
         </div>
     </div>
 </div>
 
-<script>
+@endsection 
+
+@section('script')
+{{-- <script src="{{asset('public/sdpl-assets/user/js/slider.js')}}"></script> --}}
+  <script>
     $(document).ready(function () {
+
+        $(document).on('click','#newPartner', function (e) {
+            e.preventDefault();
             
+            $('#partnerModal').modal('show');
+            $('#partner_err').html('');
+            $('#partner_err').removeClass('alert alert-danger');
+            $("#partnerForm").trigger("reset"); 
+            $('#savePartnerBtn').removeClass('hide');
+            $('#updatePartnerBtn').addClass('hide');
+
+            // const country_id = $('#country_id').val();
+            // getStateByCountry(country_id);
+        });
+
         $(document).on('change','#role_id', function (e) {
             e.preventDefault();
             var role_id = $(this).val();
@@ -172,8 +241,58 @@
 
             var state_id = $(this).val();
             getCityByState(state_id);
+        }); 
+
+        $(document).on('click','#savePartnerBtn', function (e) {
+            e.preventDefault();
+            savePartner();
+        });
+            
+    });
+
+    function savePartner() {
+        
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
         });
 
+        var formData = new FormData($("#partnerForm")[0]);
+        $.ajax({
+            type: "post",
+            url: "save-partner",
+            data: formData,
+            dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                
+                if(response.status === 400)
+                {
+                    $('#partner_err').html('');
+                    $('#partner_err').addClass('alert alert-danger');
+                    var count = 1;
+                    $.each(response.errors, function (key, err_value) { 
+                        $('#partner_err').append('<span>' + count++ +'. '+ err_value+'</span></br>');
+                    });
+                }else{
+                    $('#partner_err').html('');
+                    $('#partnerModal').modal('hide');
+                    window.location.reload();
+                    // $('#show_user_detail').html('');
+                    // $('#show_user_detail').append(response.html);
+                    // $('#userDetailModal').modal('show');
+                }
+            },
+        });
 
-    });
-</script>
+    }
+
+  </script>
+
+@endsection
+ 
+

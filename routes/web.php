@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\PartnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +42,7 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('login');
 });
-// Route::get('/register', function () {
-//     return view('register');
-// });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -54,8 +53,8 @@ Route::post('/user-login', [UserController::class, 'userLogin']);
 Route::controller(RegisterController::class)->group(function () {
     // Route::get('register','index');
     Route::post('user-register','register');
-    Route::get('get-state-by-country/{country_id}', 'getStateByCountry');
-    Route::get('get-city-by-state/{state_id}', 'getCityByState');
+    Route::get('state-by-country/{country_id}', 'getStateByCountry');
+    Route::get('city-by-state/{state_id}', 'getCityByState');
     
 });
 
@@ -72,6 +71,18 @@ Route::group(['middleware'=>'user_auth'], function(){
         Route::get('dashboard','index');
         
     });
+
+    Route::controller(MasterController::class)->group(function () {        
+        Route::get('get-state-by-country/{country_id}', 'getStateByCountry');
+        Route::get('get-city-by-state/{state_id}', 'getCityByState');
+    });
+    
+    Route::controller(PartnerController::class)->group(function () {
+        Route::get('partner','index');
+        Route::post('save-partner','savePartner');
+        
+    });
+
 
     Route::get('logout', [UserController::class, 'logout']);
 });

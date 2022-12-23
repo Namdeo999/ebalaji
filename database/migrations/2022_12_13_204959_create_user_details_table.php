@@ -25,6 +25,11 @@ class CreateUserDetailsTable extends Migration
             $table->integer('city_id')->default(0);
             $table->integer('pincode')->default(0);
             $table->integer('join_amount')->default(0);
+            $table->string('domain')->nullable();
+            $table->string('aadhar_front')->nullable();
+            $table->string('aadhar_back')->nullable();
+            $table->string('pan_front')->nullable();
+            $table->string('pan_back')->nullable();
             $table->timestamps();
         });
     }

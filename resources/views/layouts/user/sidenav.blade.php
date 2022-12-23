@@ -42,8 +42,21 @@
             <a href="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a>
             
           </li>
+
+          <hr style="margin: 0px; color:#ffffff;">
+          <li class="nav-header text-light ">Manage & Utilities</li>
+          <hr style="margin: 0px; color:#ffffff;">
+          <li class="nav-item">
+            <a href="partner" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>Partners</p></a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>P-Coupon</p></a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>E-Coupon</p></a>
+          </li>
           
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -84,23 +97,12 @@
                 </a>
               </li>
             </ul>
-          </li>
+        </li> --}}
 
-          <li class="nav-header">Coupon</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>P-Coupon </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>E-Coupon</p>
-            </a>
-          </li>
-
+          {{-- <li class="nav-header">Coupon</li> --}}
+          <hr style="margin: 0px; color:#ffffff;">
           <li class="nav-header">Account</li>
+          <hr style="margin: 0px; color:#ffffff;">
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

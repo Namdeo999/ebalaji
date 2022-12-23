@@ -43,10 +43,11 @@
                 @include('layouts.user.sidenav')
             </aside>
 
-            <div class="container-fluid pt-4 pb-4">
+            <div class="container-fluid mt-4 pb-4">
                 <div class="content-wrapper">
                     <section class="content pt-4">
                         @yield('style')
+                        @yield('content-header')
                         @yield('content')
                         @yield('script')
                     </section>
@@ -84,4 +85,5 @@
     <script src="{{ asset('assets/user/js/jquery.overlayScrollbars.min.js') }}"></script>
     <script src="{{ asset('assets/user/js/adminlte.js') }}"></script>
     <script src="{{ asset('assets/user/js/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/user/js/master.js') }}"></script>
 </html>

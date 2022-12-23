@@ -57,9 +57,10 @@ function registerUser() {
 function getStateByCountry(country_id) {
     $.ajax({
         type: "get",
-        url: "get-state-by-country/"+country_id,
+        url: "state-by-country/"+country_id,
         dataType: "json",
         success: function (response) {
+
             $('#state_id').html("");
             $('#city_id').html("");
             if (response.status == 200) {
@@ -73,7 +74,7 @@ function getStateByCountry(country_id) {
 function getCityByState(state_id) {
     $.ajax({
         type: "get",
-        url: "get-city-by-state/"+state_id,
+        url: "city-by-state/"+state_id,
         dataType: "json",
         success: function (response) {
             $('#city_id').html("");

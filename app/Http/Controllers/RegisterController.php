@@ -32,7 +32,7 @@ class RegisterController extends Controller
     {
         
         $validator = Validator::make($req->all(),[
-            'mobile' => 'required|max:191',
+            'mobile' => 'required|unique:users,mobile,'.$req->input('mobile'),
             'email' => 'required|unique:users,email,'.$req->input('email'),
             'name' => 'required|max:191',
             'role_id' => 'required|max:191',
@@ -71,7 +71,35 @@ class RegisterController extends Controller
                 $userDetail->city_id = $req->input('city_id');
                 $userDetail->pincode = $req->input('pincode');
                 $userDetail->join_amount = $req->input('join_amount');
-                $userDetail->save();
+                $userDetail->domain = $req->input('domain');
+
+                if ($req->input('role_id') == MyApp::ADMIN) {
+                    $AadharFrontImage = public_path('storage/').$userDetail->aadhar_front;
+                    if(file_exists($AadharFrontImage)){
+                        @unlink($AadharFrontImage); 
+                    }
+                    $userDetail->aadhar_front = $req->file('aadhar_front')->store('assets/partners'. $req->input('aadhar_front'),'public');
+                    
+                    $AadharBackImage = public_path('storage/').$userDetail->aadhar_back;
+                    if(file_exists($AadharBackImage)){
+                        @unlink($AadharBackImage); 
+                    }
+                    $userDetail->aadhar_back = $req->file('aadhar_back')->store('assets/partners'. $req->input('aadhar_back'),'public');
+    
+                    $PanFrontImage = public_path('storage/').$userDetail->pan_front;
+                    if(file_exists($PanFrontImage)){
+                        @unlink($PanFrontImage); 
+                    }
+                    $userDetail->pan_front = $req->file('pan_front')->store('assets/partners'. $req->input('pan_front'),'public');
+    
+                    $PanBackImage = public_path('storage/').$userDetail->pan_back;
+                    if(file_exists($PanBackImage)){
+                        @unlink($PanBackImage); 
+                    }
+                    $userDetail->pan_back = $req->file('pan_back')->store('assets/partners'. $req->input('pan_back'),'public');
+                }
+
+                // $userDetail->save();
                 if ($userDetail->save()) {
                     $data = $this->getUserDetail($model->id);
                 }

@@ -52,16 +52,20 @@
                                 </div>
                             </div>
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="btn btn-primary btn-sm text-end">Login</button>
+                                </div>
                             </div>
                         </div>
                     </form>
-                    <p class="mb-1">
-                        <a href="forgot-password.html">I forgot my password</a>
-                    </p>
-                    {{-- <p class="mb-0">
-                        <a href="register" class="text-center">Register a new membership</a>
-                    </p> --}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><a href="/">Forgot Password</a></p>
+                        </div>
+                        <div class="col-md-6 ">
+                            <p style="float:right;"><a href="/">Back To Home</a></p>
+                        </div>
+                    </div>
                     @if(session()->has('error'))
                         <div class="alert alert-danger mt-2" role="alert">
                             {{session('error')}} 
