@@ -55,6 +55,29 @@
           <li class="nav-item">
             <a href="" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>E-Coupon</p></a>
           </li>
+
+          <hr style="margin: 0px; color:#ffffff;">
+          <li class="nav-header text-light ">Direct & Utilities</li>
+          <hr style="margin: 0px; color:#ffffff;">
+
+          <li class="nav-item">
+            <a href="https://www.trackpan.utiitsl.com/PANONLINE/#forward" target="_blank" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>Track UTI PAN</p></a>
+          </li>
+          <li class="nav-item">
+            <a href="https://tin.tin.nsdl.com/pantan/StatusTrack.html" target="_blank" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>Track NSDL PAN</p></a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.pan.utiitsl.com/PAN_ONLINE/ePANCard" target="_blank" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>UTI E-PAN</p></a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.onlineservices.nsdl.com/paam/requestAndDownloadEPAN.html" target="_blank" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>NSDL E-PAN</p></a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.pan.utiitsl.com/PAN_ONLINE/homereprint" target="_blank" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>Reprint UTI PAN</p></a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.onlineservices.nsdl.com/paam/ReprintEPan.html" target="_blank" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>Reprint NSDL PAN</p></a>
+          </li>
           
         {{-- <li class="nav-item">
             <a href="#" class="nav-link">
