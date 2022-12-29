@@ -56,6 +56,7 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
     'api_url' => env('API_URL'),
+    'partner_id' => env('PARTNER_ID'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

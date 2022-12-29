@@ -50,6 +50,12 @@ class RegisterController extends Controller
             ]);
         }else{
 
+            if (session()->has('LOGIN_ID')) {
+                $partner_id = session('LOGIN_ID');
+            }else{
+                $partner_id = config('app.partner_id');
+            }
+
             $model = new User ;
             $model->mobile = $req->input('mobile');
             $model->email = strtolower($req->input('email'));
@@ -63,6 +69,7 @@ class RegisterController extends Controller
 
                 $userDetail->user_id = $model->id;
                 $userDetail->unique_id = $unique_id;
+                $userDetail->partner_id = $partner_id;
                 $userDetail->role_id = $req->input('role_id');
                 $userDetail->name = strtolower($req->input('name'));
                 $userDetail->pan = $req->input('pan');

@@ -149,6 +149,9 @@ tbody tr #count_item:first-child:before
   background-color: #fff;
   border: 0px;
 }
+.new_btn{
+  background: linear-gradient( #ffd89b , #19547b );
+}
 
 /* #token_no{
   padding: 2px 10px;

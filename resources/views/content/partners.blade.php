@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
-                    <button type="button" id="newPartner" class="btn btn-primary btn-flat btn-sm "><i class="fas fa-plus"></i> New</button>
+                    <button type="button" id="newPartner" class="btn btn-primary btn-flat  "><i class="fas fa-plus"></i> Create New Partner</button>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
 
                                 </div>
 
-                                <input type="hidden" name="partner_id" id="partner_id" value="{{session('LOGIN_ID')}}">
+                                {{-- <input type="hidden" name="partner_id" id="partner_id" value="{{session('LOGIN_ID')}}"> --}}
                                 
                             </form>
         
@@ -181,8 +181,8 @@
                                 <td>{{ucwords($list->name)}}</td>
                                 <td> <span class="badge bg-warning text-dark">Pending</span></td>
                                 <td>
-                                    <button type="button" class="btn btn-info btn-sm editAdminBtn mr-1" value="{{$list->id}}"><i class="fas fa-edit"></i></button>
-                                    <button type="button" class="btn btn-danger btn-sm deleteAdminBtn ml-1" value="{{$list->id}}"><i class="fas fa-trash"></i></button>
+                                    {{-- <button type="button" class="btn btn-info btn-sm editAdminBtn mr-1" value="{{$list->id}}"><i class="fas fa-edit"></i></button> --}}
+                                    {{-- <button type="button" class="btn btn-danger btn-sm deleteAdminBtn ml-1" value="{{$list->id}}"><i class="fas fa-trash"></i></button> --}}
                                 </td>
                             </tr>
                         @endforeach

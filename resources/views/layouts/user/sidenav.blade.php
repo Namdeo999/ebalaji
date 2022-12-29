@@ -78,6 +78,9 @@
           <li class="nav-item">
             <a href="https://www.onlineservices.nsdl.com/paam/ReprintEPan.html" target="_blank" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>Reprint NSDL PAN</p></a>
           </li>
+          <li class="nav-item">
+            <a href="https://www.pan.utiitsl.com/panaadhaarlink/forms/pan.html/panaadhaar" target="_blank" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>UTI PAN Link Status</p></a>
+          </li>
           
         {{-- <li class="nav-item">
             <a href="#" class="nav-link">

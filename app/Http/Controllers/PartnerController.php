@@ -46,7 +46,7 @@ class PartnerController extends Controller
             'state_id' => 'required|max:191',
             'city_id' => 'required|max:191',
             'pincode' => 'required|max:191',
-            'partner_id' => 'required|max:191',
+            // 'partner_id' => 'required|max:191',
         ]);
         if($validator->fails())
         {
@@ -55,11 +55,15 @@ class PartnerController extends Controller
                 'errors'=>$validator->messages(),
             ]);
         }else{
+            if (session()->has('LOGIN_ID')) {
+                $partner_id = session('LOGIN_ID');
+            }else{
+                $partner_id = config('app.partner_id');
+            }
 
             $model = new User ;
             $model->mobile = $req->input('mobile');
             $model->email = strtolower($req->input('email'));
-            
             // $model->password = Hash::make($req->input('password')); 
             $model->password = Hash::make('User@123'); 
 
@@ -69,7 +73,7 @@ class PartnerController extends Controller
 
                 $userDetail->user_id = $model->id;
                 $userDetail->unique_id = $unique_id;
-                $userDetail->partner_id = $req->input('partner_id');
+                $userDetail->partner_id = $partner_id;
                 $userDetail->role_id = $req->input('role_id');
                 $userDetail->name = strtolower($req->input('name'));
                 $userDetail->pan = $req->input('pan');
