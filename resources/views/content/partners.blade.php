@@ -126,16 +126,16 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card">
 
             <div class="card-header">
                     
                 <div class="row">
-                    <div class="col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-md-8 col-lg-8 col-xl-8">
                         <h3 class="card-title">Partners</h3>
                     </div>
-                    <div class=" col-md-4 col-lg-4 col-xl-4">
+                    <div class=" col-md-2 col-lg-2 col-xl-2">
                         <select id="filter_city_id" class="form-select form-select-sm select_chosen">
                             <option selected disabled>Role</option>
                             @foreach ($roles as $key => $list)
@@ -143,7 +143,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2">
                         <div class="card-tools">
                             <div class="input-group input-group-sm" >
                                 <input type="text" name="table_search" class="form-control float-right search" placeholder="Search">
@@ -165,9 +165,14 @@
                     <thead>
                         <tr>
                             <th>SN</th>
+                            <th>Date</th>
                             <th>Unique Id</th>
                             <th>Role</th>
                             <th>Name</th>
+                            <th>State</th>
+                            <th>City</th>
+                            <th>Pin Code</th>
+                            {{-- <th>Created By</th> --}}
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -176,10 +181,22 @@
                         @foreach ($partners as $key => $list)
                             <tr>
                                 <td>{{++$key}}</td>
+                                <td>{{date('d-m-Y', strtotime($list->created_at))}}</td>
                                 <td>{{$list->unique_id }}</td>
                                 <td>{{ucwords($list->role) }}</td>
                                 <td>{{ucwords($list->name)}}</td>
-                                <td> <span class="badge bg-warning text-dark">Pending</span></td>
+                                <td>{{ucwords($list->state)}}</td>
+                                <td>{{ucwords($list->city)}}</td>
+                                <td>{{$list->pincode}}</td>
+                                {{-- <td>Created By</td> --}}
+
+                                <td> 
+                                    @if ($list->active == MyApp::ACTIVE)
+                                        <span class="badge bg-success text-light">Active</span>
+                                    @else
+                                        <span class="badge bg-warning text-dark">Pending</span>
+                                    @endif
+                                </td>
                                 <td>
                                     {{-- <button type="button" class="btn btn-info btn-sm editAdminBtn mr-1" value="{{$list->id}}"><i class="fas fa-edit"></i></button> --}}
                                     {{-- <button type="button" class="btn btn-danger btn-sm deleteAdminBtn ml-1" value="{{$list->id}}"><i class="fas fa-trash"></i></button> --}}

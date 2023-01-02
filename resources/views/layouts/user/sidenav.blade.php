@@ -1,4 +1,4 @@
-<a href="index3.html" class="brand-link">
+    <a href="index3.html" class="brand-link">
       <img src="assets/images/AdminLTELogo.png" alt="Ebalaji Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 
       <span class="brand-text text-light">Ebalaji Services</span>
@@ -48,6 +48,12 @@
           <hr style="margin: 0px; color:#ffffff;">
           <li class="nav-item">
             <a href="partner" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>Partners</p></a>
+          </li>
+          <hr style="margin: 0px; color:#ffffff;">
+          <li class="nav-header text-light ">Manage Coupons</li>
+          <hr style="margin: 0px; color:#ffffff;">
+          <li class="nav-item">
+            <a href="set-price" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>Set Price</p></a>
           </li>
           <li class="nav-item">
             <a href="" class="nav-link"><i class="fas fa-angle-right nav-icon"></i><p>P-Coupon</p></a>
@@ -132,15 +138,15 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
-              <p>Bank A/C </p>
+              <p>Bank Detail </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>Wallet</p>
             </a>
-          </li>
+          </li> --}}
           
           <!-- <li class="nav-item">
             <a href="#" class="nav-link">

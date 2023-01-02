@@ -64,13 +64,18 @@ class RegisterController extends Controller
             $model->password = Hash::make('User@123'); 
 
             if($model->save()){
+                $role_id = $req->input('role_id');
+                $active = 0;
+                if( $role_id == MyApp::MASTER_DISTRIBUTOR) {
+                    $active = MyApp::ACTIVE;
+                }
                 $userDetail = new UserDetail ;
                 $unique_id = 'EPAY0'.$model->id;
 
                 $userDetail->user_id = $model->id;
                 $userDetail->unique_id = $unique_id;
                 $userDetail->partner_id = $partner_id;
-                $userDetail->role_id = $req->input('role_id');
+                $userDetail->role_id = $role_id;
                 $userDetail->name = strtolower($req->input('name'));
                 $userDetail->pan = $req->input('pan');
                 $userDetail->country_id = $req->input('country_id');
@@ -79,8 +84,9 @@ class RegisterController extends Controller
                 $userDetail->pincode = $req->input('pincode');
                 $userDetail->join_amount = $req->input('join_amount');
                 $userDetail->domain = $req->input('domain');
+                $userDetail->active = $active;
 
-                if ($req->input('role_id') == MyApp::ADMIN) {
+                if ($role_id == MyApp::ADMIN) {
                     $AadharFrontImage = public_path('storage/').$userDetail->aadhar_front;
                     if(file_exists($AadharFrontImage)){
                         @unlink($AadharFrontImage); 
@@ -106,7 +112,6 @@ class RegisterController extends Controller
                     $userDetail->pan_back = $req->file('pan_back')->store('assets/partners'. $req->input('pan_back'),'public');
                 }
 
-                // $userDetail->save();
                 if ($userDetail->save()) {
                     $data = $this->getUserDetail($model->id);
                 }

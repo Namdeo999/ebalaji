@@ -7,11 +7,9 @@ class MyApp {
     const API_URL = 'http://localhost:1700/api/';
     const FILE_URL = 'http://192.168.1.99:8080/';
 
-    const RETAILER = 1;
-    const DISTRIBUTOR = 2;
-    const MASTER_DISTRIBUTOR = 3;
-    const WHITE_LEVEL = 4;
-    const ADMIN = 5;
+    const ADMIN = 1;
+    const MASTER_DISTRIBUTOR = 2;
+    const RETAILER = 3;
 
-
+    const ACTIVE = 1;
 }
