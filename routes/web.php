@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\SetPriceController;
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +87,14 @@ Route::group(['middleware'=>'user_auth'], function(){
 
     Route::controller(SetPriceController::class)->group(function () {
         Route::get('set-price','index');
-        // Route::post('save-partner','savePartner');
+        Route::post('set-partner-price','setPartnerPrice');
+        Route::post('set-coupon-price','setCouponPrice');
+    });
+
+    Route::controller(CouponController::class)->group(function () {
+        Route::get('coupon','index');
+        Route::get('get-user-detail/{coupon_type}/{unique_id}','getUserDetail');
+        Route::post('save-distribute-coupon','saveDistributeCoupon');
         
     });
 

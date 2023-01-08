@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSetPricesTable extends Migration
+class CreateCouponsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateSetPricesTable extends Migration
      */
     public function up()
     {
-        Schema::create('set_prices', function (Blueprint $table) {
+        Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->default(0);
-            $table->integer('role_id')->default(0);
-            $table->float('partner_price')->default(0);
+            $table->integer('coupon_type')->default(0);
+            $table->integer('no_of_coupon')->default(0);
+            $table->float('coupon_amount')->default(0.00);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateSetPricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('set_prices');
+        Schema::dropIfExists('coupons');
     }
 }

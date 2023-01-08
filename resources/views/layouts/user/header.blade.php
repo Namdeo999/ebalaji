@@ -31,7 +31,16 @@
       <button class="btn btn-secondry btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
           {{-- <img src="{{asset('assets/images/user_active.png')}}" class="rounded-circle elevation-3" > {{ucwords(session('LOGIN_NAME'))}} --}}
           <img src="{{asset('assets/images/user_active.png')}}" alt="Ebalaji Logo" class="img-circle elevation-2" height="28px" width="28px" > 
-          <span class="brand-text text-dark px-1">{{ucwords(session('LOGIN_NAME'))}}</span>
+          <span class="brand-text text-dark px-1">
+            {{strtoupper(session('LOGIN_NAME'))}} - 
+            @if (session('LOGIN_ROLE') == MyApp::ADMIN)
+              ADMIN
+            @elseif(session('LOGIN_ROLE') == MyApp::MASTER_DISTRIBUTOR)
+              DISTRIBUTOR
+            @else
+              RETAILER
+            @endif
+          </span>
         </button>
 
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">

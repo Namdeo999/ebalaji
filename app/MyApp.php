@@ -11,5 +11,8 @@ class MyApp {
     const MASTER_DISTRIBUTOR = 2;
     const RETAILER = 3;
 
+    const P_COUPON = 1;
+    const E_COUPON = 2;
+
     const ACTIVE = 1;
 }

@@ -41,7 +41,13 @@
                                         <select name="role_id" id="role_id" class="form-select form-select-sm">
                                             <option selected disabled>Services</option>
                                             @foreach ($roles as $list)
-                                                <option value="{{$list->id}}" role-amount="{{$list->amount}}">{{ucwords($list->role)}}</option>
+                                                @if (session('LOGIN_ROLE') == MyApp::MASTER_DISTRIBUTOR)
+                                                    @if ($list->id != MyApp::ADMIN)
+                                                        <option value="{{$list->id}}" role-amount="{{$list->amount}}">{{ucwords($list->role)}}</option>
+                                                    @endif
+                                                @else
+                                                    <option value="{{$list->id}}" role-amount="{{$list->amount}}">{{ucwords($list->role)}}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>

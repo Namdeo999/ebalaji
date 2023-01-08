@@ -26,57 +26,58 @@
                     <div class="card-header"><h5 class="card-title">Set Partner Price</h5></div>
                     <div class="card-body">
                         <div class="row">
+
                             @foreach ($roles as $list)
-                                <div class="col-sm-4">
-                                    <div class="card mb-3" >
-                                        <div class="card-header"> <b>{{ucwords($list->role)}}</b> </div>
-                                        <div class="card-body">
-                                            <div class="input-group mt-2 mb-2">
-                                                <div class="input-group-text ">
-                                                    <input class="form-check-input mt-0 role_checkbox" type="checkbox" value="{{$list->id}}">
+                                @if (session('LOGIN_ROLE') == MyApp::MASTER_DISTRIBUTOR)
+                                    @if ($list->id != MyApp::ADMIN)
+                                        <div class="col-sm-6">
+                                            <div class="card mb-3" >
+                                                <div class="card-header"> <b>{{ucwords($list->role)}}</b> </div>
+                                                <div class="card-body">
+                                                    <div class="input-group mt-2 mb-2">
+                                                        <div class="input-group-text ">
+                                                            <input class="form-check-input mt-0 role_checkbox" type="checkbox" value="{{$list->id}}">
+                                                        </div>
+                                                        @php
+                                                            $price = getPartnerPrice($list->id);
+                                                        @endphp
+                                                        <input type="text" name="partner_price" class="form-control partner_price" value="{{$price}}" disabled>
+                                                        <button class="btn btn-outline-primary setPartnerPriceBtn" type="button" disabled ><i class="fas fa-paper-plane"></i> Set</button>
+                                                    </div>
                                                 </div>
-                                                <input type="text" name="partner_price" class="form-control partner_price" disabled>
-                                                <button class="btn btn-outline-secondary setPartnerPriceBtn" type="button" disabled ><i class="fas fa-paper-plane"></i> Set</button>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="col-sm-4">
+                                        <div class="card mb-3" >
+                                            <div class="card-header"> <b>{{ucwords($list->role)}}</b> </div>
+                                            <div class="card-body">
+                                                <div class="input-group mt-2 mb-2">
+                                                    <div class="input-group-text ">
+                                                        <input class="form-check-input mt-0 role_checkbox" type="checkbox" value="{{$list->id}}">
+                                                    </div>
+                                                    @php
+                                                        $price = getPartnerPrice($list->id);
+                                                    @endphp
+                                                    <input type="text" name="partner_price" class="form-control partner_price" value="{{$price}}" disabled>
+                                                    <button class="btn btn-outline-primary setPartnerPriceBtn" type="button" disabled ><i class="fas fa-paper-plane"></i> Set</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
+
                             @endforeach
-                            {{-- <div class="col-sm-4">
-                                <div class="card mb-3" >
-                                    <div class="card-header"> <b>Master Distributor</b> </div>
-                                    <div class="card-body">
-                                        <div class="input-group mt-2 mb-2">
-                                            <div class="input-group-text">
-                                                <input class="form-check-input mt-0" type="checkbox" id="p_master_check" aria-label="Checkbox for following text input">
-                                            </div>
-                                            <input type="text" class="form-control" id="p_master" disabled>
-                                            <button class="btn btn-outline-secondary" type="button" id="pMasterSetBtn" disabled ><i class="fas fa-paper-plane"></i> Set</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="card mb-3" >
-                                    <div class="card-header"> <b>Retailer</b> </div>
-                                    
-                                    <div class="card-body">
-                                        <div class="input-group mt-2 mb-2">
-                                            <div class="input-group-text">
-                                                <input class="form-check-input mt-0" type="checkbox" id="p_retailer_check" aria-label="Checkbox for following text input">
-                                            </div>
-                                            <input type="text" class="form-control" id="p_retailer" disabled>
-                                            <button class="btn btn-outline-secondary" type="button" id="pRetailerSetBtn" disabled><i class="fas fa-paper-plane"></i> set</button>
-                                        </div>
-                                    </div>
-                                    </div>
-                            </div> --}}
+
+                            <div id="partner_price_err"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="col-md-5">
         <div class="card ">
             <div class="card-header ">
@@ -89,74 +90,63 @@
                             <div class="card-header"><h5 class="card-title">P-Coupon</h5></div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card mb-3" >
-                                            <div class="card-header"> <b>Master Distributor</b> </div>
-                                            <div class="card-body">
-                                                <div class="input-group mt-2 mb-2">
-                                                    <div class="input-group-text">
-                                                      <input class="form-check-input mt-0" type="checkbox" id="p_master_check" aria-label="Checkbox for following text input">
+                                    @foreach ($roles as $list)
+                                        @if ($list->id != MyApp::ADMIN)
+                                            <div class="col-sm-6">
+                                                <div class="card mb-3" >
+                                                    <div class="card-header"> <b>{{ucwords($list->role)}}</b>  </div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mt-2 mb-2">
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0 coupon_check" type="checkbox" value="{{$list->id}}" coupon-type="{{MyApp::P_COUPON}}">
+                                                            </div>
+                                                            @php
+                                                                $price = getCouponPrice($list->id, MyApp::P_COUPON);
+                                                            @endphp
+                                                            <input type="text" class="form-control coupon_price" value="{{$price}}" disabled>
+                                                            <button class="btn btn-outline-primary setCouponPriceBtn" type="button" disabled ><i class="fas fa-paper-plane"></i> Set</button>
+                                                        </div>
                                                     </div>
-                                                    <input type="text" class="form-control" id="p_master" disabled>
-                                                    <button class="btn btn-outline-secondary" type="button" id="pMasterSetBtn" disabled ><i class="fas fa-paper-plane"></i> Set</button>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card mb-3" >
-                                            <div class="card-header"> <b>Retailer</b> </div>
-                                            
-                                            <div class="card-body">
-                                                <div class="input-group mt-2 mb-2">
-                                                    <div class="input-group-text">
-                                                      <input class="form-check-input mt-0" type="checkbox" id="p_retailer_check" aria-label="Checkbox for following text input">
-                                                    </div>
-                                                    <input type="text" class="form-control" id="p_retailer" disabled>
-                                                    <button class="btn btn-outline-secondary" type="button" id="pRetailerSetBtn" disabled><i class="fas fa-paper-plane"></i> set</button>
-                                                </div>
-                                            </div>
-                                          </div>
-                                    </div>
+                                        @endif
+                                    @endforeach
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div id="coupon_price_err"></div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header"><h5 class="card-title">E-Coupon</h5></div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card mb-3" >
-                                            <div class="card-header"><b>Master Distributor</b></div>
-                                            <div class="card-body">
-                                                <div class="input-group mt-2 mb-2">
-                                                    <div class="input-group-text">
-                                                      <input class="form-check-input mt-0" type="checkbox" id="e_master_check">
+
+                                    @foreach ($roles as $list)
+                                        @if ($list->id != MyApp::ADMIN)
+                                            <div class="col-sm-6">
+                                                <div class="card mb-3" >
+                                                    <div class="card-header"> <b>{{ucwords($list->role)}}</b>  </div>
+                                                    <div class="card-body">
+                                                        <div class="input-group mt-2 mb-2">
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0 coupon_check" type="checkbox" value="{{$list->id}}" coupon-type="{{MyApp::E_COUPON}}">
+                                                            </div>
+                                                            @php
+                                                                $price = getCouponPrice($list->id, MyApp::E_COUPON);
+                                                            @endphp
+                                                            <input type="text" class="form-control coupon_price" value="{{$price}}" disabled>
+                                                            <button class="btn btn-outline-primary setCouponPriceBtn" type="button" disabled ><i class="fas fa-paper-plane"></i> Set</button>
+                                                        </div>
                                                     </div>
-                                                    <input type="text" class="form-control" id="e_master" disabled>
-                                                    <button class="btn btn-outline-secondary" type="button" id="eMasterSetBtn" disabled><i class="fas fa-paper-plane"></i> set</button>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card mb-3" >
-                                            <div class="card-header"><b>Retailer</b></div>
-                                            <div class="card-body">
-                                                <div class="input-group mt-2 mb-2">
-                                                    <div class="input-group-text">
-                                                      <input class="form-check-input mt-0" type="checkbox" id="e_retailer_check">
-                                                    </div>
-                                                    <input type="text" class="form-control" id="e_retailer" disabled>
-                                                    <button class="btn btn-outline-secondary" type="button" id="eRetailerSetBtn" ><i class="fas fa-paper-plane"></i> set</button>
-                                                </div>
-                                            </div>
-                                          </div>
-                                    </div>
+                                        @endif
+                                    @endforeach
+                                    
                                 </div>
                             </div>
                           </div>
@@ -271,96 +261,124 @@
             }
         });
 
-        $(document).on('change','#p_master_check', function (e) {
+        $(document).on('change','.coupon_check', function (e) {
             e.preventDefault();
-            if( $(this).is(':checked') ) {   
-                $('#p_master').prop("disabled", false);
-                $('#pMasterSetBtn').prop("disabled", false);
-            } else {                      
-                $('#p_master').prop("disabled", true);
-                $('#pMasterSetBtn').prop("disabled", true);
-            } 
-        });
-
-        $(document).on('change','#p_retailer_check', function (e) {
-            e.preventDefault();
-            if( $(this).is(':checked') ) {   
-                $('#p_retailer').prop("disabled", false);
-                $('#pRetailerSetBtn').prop("disabled", false);
-            } else {                      
-                $('#p_retailer').prop("disabled", true);
-                $('#pRetailerSetBtn').prop("disabled", true);
+            var status = $(this).is(':checked');
+            if(status == true){
+                $(this).parent().parent().find('.coupon_price').prop("disabled", false);
+                $(this).parent().parent().find('.setCouponPriceBtn').prop("disabled", false);
+                
+            }else{
+                $(this).parent().parent().find('.coupon_price').prop("disabled", true);
+                $(this).parent().parent().find('.setCouponPriceBtn').prop("disabled", true);
+                
             }
         });
 
-        $(document).on('change','#e_master_check', function (e) {
+        $(document).on('click','.setPartnerPriceBtn', function (e) {
             e.preventDefault();
-            if( $(this).is(':checked') ) {   
-                $('#e_master').prop("disabled", false);
-                $('#eMasterSetBtn').prop("disabled", false);
-            } else {                      
-                $('#e_master').prop("disabled", true);
-                $('#eMasterSetBtn').prop("disabled", true);
-            } 
+            var object = $(this);
+            setPartnerPrice(object);            
         });
 
-        $(document).on('change','#e_retailer_check', function (e) {
+        $(document).on('click','.setCouponPriceBtn', function (e) {
             e.preventDefault();
-            if( $(this).is(':checked') ) {   
-                $('#e_retailer').prop("disabled", false);
-                $('#eRetailerSetBtn').prop("disabled", false);
-            } else {                      
-                $('#e_retailer').prop("disabled", true);
-                $('#eRetailerSetBtn').prop("disabled", true);
-            }
+            var object = $(this);
+            setCouponPrice(object);            
         });
 
-        
-
-        
             
     });
 
-    // function savePartner() {
-        
-    //     $.ajaxSetup({
-    //         headers: {
-    //             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-    //         },
-    //     });
+    function setPartnerPrice(object) {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
 
-    //     var formData = new FormData($("#partnerForm")[0]);
-    //     $.ajax({
-    //         type: "post",
-    //         url: "save-partner",
-    //         data: formData,
-    //         dataType: "json",
-    //         cache: false,
-    //         contentType: false,
-    //         processData: false,
-    //         success: function (response) {
-    //             console.log(response);
+        var role_id = $(object).parent().parent().find('.role_checkbox').val();
+        var partner_price = $(object).parent().parent().find('.partner_price').val();
+    
+        var data = {
+            role_id:role_id,
+            partner_price:partner_price,
+        }
+
+        // var formData = new FormData($("#partnerForm")[0]);
+        $.ajax({
+            type: "post",
+            url: "set-partner-price",
+            data: data,
+            dataType: "json",
+            // cache: false,
+            // contentType: false,
+            // processData: false,
+            success: function (response) {
+                // console.log(response);
                 
-    //             if(response.status === 400)
-    //             {
-    //                 $('#partner_err').html('');
-    //                 $('#partner_err').addClass('alert alert-danger');
-    //                 var count = 1;
-    //                 $.each(response.errors, function (key, err_value) { 
-    //                     $('#partner_err').append('<span>' + count++ +'. '+ err_value+'</span></br>');
-    //                 });
-    //             }else{
-    //                 $('#partner_err').html('');
-    //                 $('#partnerModal').modal('hide');
-    //                 window.location.reload();
-    //                 // $('#show_user_detail').html('');
-    //                 // $('#show_user_detail').append(response.html);
-    //                 // $('#userDetailModal').modal('show');
-    //             }
-    //         },
-    //     });
+                if(response.status === 400)
+                {
+                    $('#partner_price_err').html('');
+                    $('#partner_price_err').addClass('alert alert-danger');
+                    var count = 1;
+                    $.each(response.errors, function (key, err_value) { 
+                        $('#partner_price_err').append('<span>' + count++ +'. '+ err_value+'</span></br>');
+                    });
+                }else{
+                    $('#partner_price_err').html('');
+                    // $('#partnerModal').modal('hide');
+                    window.location.reload();
+                    
+                }
+            },
+        });
 
-    // }
+    }
+    function setCouponPrice(object) {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        var coupon_type = $(object).parent().parent().find('.coupon_check').attr('coupon-type');
+        var role_id = $(object).parent().parent().find('.coupon_check').val();
+        var coupon_price = $(object).parent().parent().find('.coupon_price').val();
+    
+        var data = {
+            coupon_type:coupon_type,
+            role_id:role_id,
+            coupon_price:coupon_price,
+        }
+
+        // var formData = new FormData($("#partnerForm")[0]);
+        $.ajax({
+            type: "post",
+            url: "set-coupon-price",
+            data: data,
+            dataType: "json",
+            // cache: false,
+            // contentType: false,
+            // processData: false,
+            success: function (response) {
+                // console.log(response);
+                if(response.status === 400)
+                {
+                    $('#coupon_price_err').html('');
+                    $('#coupon_price_err').addClass('alert alert-danger');
+                    var count = 1;
+                    $.each(response.errors, function (key, err_value) { 
+                        $('#coupon_price_err').append('<span>' + count++ +'. '+ err_value+'</span></br>');
+                    });
+                }else{
+                    $('#coupon_price_err').html('');
+                    window.location.reload();
+                }
+            },
+        });
+
+    }
 
   </script>
 

@@ -31,3 +31,4 @@ function getCityByState(state_id) {
         }
     });
 }
+
